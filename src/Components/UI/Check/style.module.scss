@@ -1,0 +1,20 @@
+.circle{
+  width: 16px;
+  height: 16px;
+  background-color: transparent;
+  border-radius: 50%;
+  border: 1px solid #167F96;
+  cursor: pointer;
+}
+
+.circle:hover{
+  background: url("../../../images/okay.svg") no-repeat center center / cover;
+}
+.complete{
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  border: 1px solid #167F96;
+  background: url("../../../images/okay.svg") no-repeat center center / cover;
+  cursor: pointer;
+}

@@ -1,15 +1,16 @@
 import React from 'react';
-import Date from "../Time/Time";
+import Search from "../UI/Search/Search";
+import Settings from "../UI/Settings/Settings";
+import classes from './style.module.scss'
 
 const Nav = () => {
     return (
-        <div>
-            <div>
-                <h1>To Do</h1>
-
+        <div className={classes.container}>
+            <div className={classes.contentContainer}>
+                <a className={classes.title} href="#">To Do</a>
+                <Search></Search>
+                <Settings></Settings>
             </div>
-            <input type="text"/>
-            <button>Настройки</button>
         </div>
     );
 };
