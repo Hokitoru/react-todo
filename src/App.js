@@ -1,5 +1,5 @@
 import Nav from "./Components/Nav/Nav";
-import Time from "./Components/Time/Time";
+import Time from "./Components/UI/Time/Time";
 import React, {useState} from "react";
 import dayjs from "dayjs";
 import {addTaskAction, completeTaskAction, removeTaskAction} from "./Components/Store/taskReducer";
@@ -10,6 +10,8 @@ import Settings from "./Components/UI/Settings/Settings";
 import classes from './style.module.scss'
 import Check from "./Components/UI/Check/Check";
 import Calendar from "./Components/UI/Calendar/Calendar";
+import TaskAdder from "./Components/TaskAdder/TaskAdder";
+import AddButton from "./Components/UI/AddButton/AddButton";
 
 function App() {
     // const dispatch = useDispatch();
@@ -87,7 +89,7 @@ function App() {
       //     }
       // </div>
       <div className={classes.container}>
-          <Calendar></Calendar>
+          <TaskAdder></TaskAdder>
       </div>
   );
 }

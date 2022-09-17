@@ -1,4 +1,14 @@
+.container{
+  position: relative;
+}
+
 .calendarIcon{
   width: 30px;
   height: 30px;
+  cursor: pointer;
+}
+
+.calendarBlock{
+  position: absolute;
+  top: 10;
 }

@@ -1,15 +1,69 @@
 .container{
+  width: 200px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  text-align: center;
+}
+
+.dropdownButton{
   width: 110px;
   display: flex;
   align-items: center;
   justify-content: space-evenly;
+  cursor: pointer;
+
+  img{
+    width: 16px;
+  }
+
+  p{
+    font-size: 22px;
+    color: #767676;
+    margin: 0;
+  }
 }
 
-.sortIcon{
-  width: 16px;
+.dropdownContent{
+  display: none;
+  position: absolute;
+  width: 200px;
+  top: 26px;
+  background-color: #fff;
+
+  br{
+    height: 1px;
+    width: 1px;
+  }
+
+  div{
+    height: 40px;
+    border-bottom: 1px solid #767676;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 5px;
+
+    h2{
+      margin: 0;
+      font-size: 18px;
+    }
+  }
+
+  button{
+    height: 30px;
+    background-color: transparent;
+    border: none;
+  }
+
+  button:hover{
+    background-color: #767676;
+  }
 }
 
-.sortText{
-  font-size: 22px;
-  color: #767676;
+.dropdownContentVisible{
+  display: flex;
+  flex-direction: column;
 }

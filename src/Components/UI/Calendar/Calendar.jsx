@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useEffect, useState} from 'react';
 import CalendarComp from "react-calendar";
 import 'react-calendar/dist/Calendar.css';
 import calendarIcon from '../../../images/calendar.png'
@@ -8,15 +8,19 @@ const Calendar = () => {
     const [showCalendar, setShowCalendar] = useState(false);
     const [date, setDate] = useState(null);
 
+    const changeDate = (event) => {
+        setDate(event);
+        setShowCalendar(false);
+    }
+
     return (
-        <div>
+        <div className={classes.container}>
+            <img onClick={() => setShowCalendar(!showCalendar)} className={classes.calendarIcon} src={calendarIcon} alt="calendar"/>
             {
-                showCalendar ? <div><CalendarComp minDate={new Date()}/></div> : <img onClick={() => setShowCalendar(!showCalendar)} className={classes.calendarIcon} src={calendarIcon} alt="calendar"/>
+                showCalendar ? <div className={classes.calendarBlock}><CalendarComp onChange={event => changeDate(event)} value={date} minDate={new Date()}/></div> : ''
             }
         </div>
     );
 };
 
-
-// onChange={event => getDate(event);
 export default Calendar;
