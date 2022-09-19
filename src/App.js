@@ -1,9 +1,9 @@
 import Nav from "./Components/Nav/Nav";
-import Time from "./Components/UI/Time/Time";
-import React, {useState} from "react";
+import Time from "./Components/Time/Time";
+import React, {createContext, useContext, useState} from "react";
 import dayjs from "dayjs";
 import {addTaskAction, completeTaskAction, removeTaskAction} from "./Components/Store/taskReducer";
-import {useDispatch, useSelector} from "react-redux";
+import {Provider, useDispatch, useSelector} from "react-redux";
 import Search from "./Components/UI/Search/Search";
 import SortButton from "./Components/UI/SortButton/SortButton";
 import Settings from "./Components/UI/Settings/Settings";
@@ -12,14 +12,17 @@ import Check from "./Components/UI/Check/Check";
 import Calendar from "./Components/UI/Calendar/Calendar";
 import TaskAdder from "./Components/TaskAdder/TaskAdder";
 import AddButton from "./Components/UI/AddButton/AddButton";
+import taskInfo from '../src/Components/UI/Calendar/Calendar'
+import {store} from "./Components/Store";
 
 function App() {
+
     // const dispatch = useDispatch();
-    // const taskList = useSelector(state => state.task);
+    const taskList = useSelector(state => state.task);
     //
     // const [task, setTask] = useState('');
     //
-    // const generateId = () => Date.now().toString(36) + Math.random().toString(36).substr(2);
+    //
     //
     // const createTask = () => {
     //         dispatch(addTaskAction({task, id: generateId(), date, completed: false}));
@@ -61,6 +64,7 @@ function App() {
     //     )
     // }
 
+
   return (
       // <div>
       //     <Nav></Nav>
@@ -88,12 +92,25 @@ function App() {
       //         </div> : null)//TODO сделать отрисовку выполненных таск
       //     }
       // </div>
-      <div className={classes.container}>
+      <div>
+          <Nav></Nav>
+          <Time></Time>
           <TaskAdder></TaskAdder>
+          {
+                          taskList.task.map(
+                              elem => elem.completed === false ?
+                                  <div key={elem.id}>
+                                  <div>
+                                      <div>{elem.taskText}</div>
+                                      <div>{elem.date === null ? '' : dayjs(elem.date).format('D MMMM')}</div>
+                                  </div>
+                              </div> : null
+                          )
+                      }
       </div>
   );
 }
-
+// task, id: generateId(), date, completed: false, createTime, important
 export default App;
 
 //TODO стили
