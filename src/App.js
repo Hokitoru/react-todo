@@ -14,11 +14,11 @@ import TaskAdder from "./Components/TaskAdder/TaskAdder";
 import AddButton from "./Components/UI/AddButton/AddButton";
 import taskInfo from '../src/Components/UI/Calendar/Calendar'
 import {store} from "./Components/Store";
+import TaskList from "./Components/TaskList/TaskList";
 
 function App() {
 
     // const dispatch = useDispatch();
-    const taskList = useSelector(state => state.task);
     //
     // const [task, setTask] = useState('');
     //
@@ -96,17 +96,7 @@ function App() {
           <Nav></Nav>
           <Time></Time>
           <TaskAdder></TaskAdder>
-          {
-                          taskList.task.map(
-                              elem => elem.completed === false ?
-                                  <div key={elem.id}>
-                                  <div>
-                                      <div>{elem.taskText}</div>
-                                      <div>{elem.date === null ? '' : dayjs(elem.date).format('D MMMM')}</div>
-                                  </div>
-                              </div> : null
-                          )
-                      }
+          <TaskList></TaskList>
       </div>
   );
 }
