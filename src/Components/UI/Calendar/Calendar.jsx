@@ -11,7 +11,7 @@ const Calendar = ({setTaskInfo}) => {
     const changeDate = (event) => {
         setDate(event);
         setShowCalendar(false);
-        setTaskInfo({date});
+        setTaskInfo({date,});
     }
 
     return (

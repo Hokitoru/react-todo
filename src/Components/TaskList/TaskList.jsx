@@ -17,11 +17,14 @@ const TaskList = () => {
                 <div className={classes.taskList}>
                     {
                         taskList.map(elem => <div className={classes.taskListItem} key={elem.id}>
-                            <div className={classes.taskListItemContainer}>
+                            <div>
                                 <Check></Check>
-                                <div className={classes.taskListItemContent}>
+                                <div>
                                     <div>
                                         <h3>{elem.taskText}</h3>
+                                        {
+                                            elem.date === null ? 'Задачи' : elem.date
+                                        }
                                     </div>
                                     <img src={star} alt="star"/>
                                 </div>
