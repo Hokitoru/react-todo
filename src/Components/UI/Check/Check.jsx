@@ -2,9 +2,11 @@ import React, {useState} from 'react';
 import okay from '../../../images/okay.svg'
 import classes from './style.module.scss'
 
-const Check = () => {
+const Check = ({onClick}) => {
 
     const [isCompleted, setIsCompleted] = useState(false);
+
+    // TODO Сделать функцию для изменения кнопки и изменения свойства 'completed' в store объекта
 
     return (
         <div>

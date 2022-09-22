@@ -4,26 +4,30 @@ import {useDispatch, useSelector} from "react-redux";
 import dayjs from "dayjs";
 import Check from "../UI/Check/Check";
 import star from '../../../src/images/star.svg'
+import {completeTaskAction} from "../Store/taskReducer";
 
 const TaskList = () => {
     const dispatch = useDispatch();
     const taskList = useSelector(state => state.task.task);
     console.log(taskList);
 
+    const changeComplete = (elem) => {
+        dispatch(completeTaskAction(elem));
+    }
 
     return (
         <div className={classes.container}>
             {
-                <div className={classes.taskList}>
+                <div>
                     {
                         taskList.map(elem => <div className={classes.taskListItem} key={elem.id}>
                             <div>
-                                <Check></Check>
+                                <Check onClick={changeComplete(elem)}></Check>
                                 <div>
                                     <div>
                                         <h3>{elem.taskText}</h3>
                                         {
-                                            elem.date === null ? 'Задачи' : elem.date
+                                            elem.date === null ? 'Задачи' : dayjs(elem.date).format('dddd, D MMMM')
                                         }
                                     </div>
                                     <img src={star} alt="star"/>

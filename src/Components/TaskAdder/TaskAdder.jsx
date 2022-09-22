@@ -15,9 +15,6 @@ const TaskAdder = () => {
     const [taskText, setTaskText] = useState('');
     const [taskInfo, setTaskInfo] = useState({});
 
-    console.log(taskInfo);
-    console.log(taskInfo.hasOwnProperty('date'));
-
     const createTask = () => {
         if(taskInfo.hasOwnProperty('date')){
             dispatch(addTaskAction({...taskInfo, taskText, createTime: new Date(), id: generateId(), completed: false, important: false,}));
@@ -26,7 +23,7 @@ const TaskAdder = () => {
         }
     }
 
-
+    console.log(taskInfo);
     return (
         <div className={classes.container}>
             <div className={classes.inputTask}>

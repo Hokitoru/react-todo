@@ -1,14 +1,16 @@
 .container{
   width: 92%;
-  background-color: #f1f0ef;
+  background-color: transparent;
   margin: 20px auto;
 }
 
 
 .taskListItem {
+  margin-top: 10px;
   height: 60px;
   display: flex;
   align-items: center;
+  background-color: #f1f0ef;
 
   & > div {
     width: 99%;
