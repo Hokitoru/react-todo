@@ -9,9 +9,10 @@ const Calendar = ({setTaskInfo}) => {
     const [date, setDate] = useState(null);
 
     const changeDate = (event) => {
+        console.log('checl', event)
         setDate(event);
         setShowCalendar(false);
-        setTaskInfo({date,});
+        setTaskInfo({date: event});
     }
 
     return (

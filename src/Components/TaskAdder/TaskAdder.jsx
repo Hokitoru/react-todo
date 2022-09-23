@@ -23,7 +23,6 @@ const TaskAdder = () => {
         }
     }
 
-    console.log(taskInfo);
     return (
         <div className={classes.container}>
             <div className={classes.inputTask}>
@@ -31,7 +30,7 @@ const TaskAdder = () => {
             </div>
             <div className={classes.optionsBackground}>
                 <div className={classes.options}>
-                    <Calendar taskInfo={taskInfo} setTaskInfo={setTaskInfo}></Calendar>
+                    <Calendar setTaskInfo={(date) => {console.log(date); setTaskInfo(date)}}></Calendar>
                     <AddButton onClick={createTask}></AddButton>
                 </div>
             </div>
