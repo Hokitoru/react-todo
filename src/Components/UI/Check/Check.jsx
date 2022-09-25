@@ -11,7 +11,7 @@ const Check = ({onClick}) => {
     return (
         <div>
             {
-                !isCompleted ? <div onClick={() => setIsCompleted(!isCompleted)} className={classes.circle}></div> : <div onClick={() => setIsCompleted(!isCompleted)} className={classes.complete}></div>
+                !isCompleted ? <div onClick={() => {setIsCompleted(!isCompleted); onClick()}} className={classes.circle}></div> : <div onClick={() => {setIsCompleted(!isCompleted); onClick()}} className={classes.complete}></div>
             }
         </div>
     );

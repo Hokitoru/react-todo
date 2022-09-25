@@ -14,6 +14,7 @@ const TaskAdder = () => {
 
     const [taskText, setTaskText] = useState('');
     const [taskInfo, setTaskInfo] = useState({});
+    const [date, setDate] = useState(null);
 
     const createTask = () => {
         if(taskInfo.hasOwnProperty('date')){
@@ -21,6 +22,9 @@ const TaskAdder = () => {
         }else{
             dispatch(addTaskAction({taskText, createTime: new Date(), id: generateId(), completed: false, important: false, date: null}));
         }
+
+        setDate(null);
+        setTaskInfo({});
     }
 
     return (
@@ -30,7 +34,7 @@ const TaskAdder = () => {
             </div>
             <div className={classes.optionsBackground}>
                 <div className={classes.options}>
-                    <Calendar setTaskInfo={(date) => {console.log(date); setTaskInfo(date)}}></Calendar>
+                    <Calendar setTaskInfo={setTaskInfo} date={date} setDate={setDate}></Calendar>
                     <AddButton onClick={createTask}></AddButton>
                 </div>
             </div>

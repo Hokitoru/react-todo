@@ -4,12 +4,11 @@ import 'react-calendar/dist/Calendar.css';
 import calendarIcon from '../../../images/calendar.png'
 import classes from './style.module.scss'
 
-const Calendar = ({setTaskInfo}) => {
+const Calendar = ({setTaskInfo, date, setDate}) => {
     const [showCalendar, setShowCalendar] = useState(false);
-    const [date, setDate] = useState(null);
+
 
     const changeDate = (event) => {
-        console.log('checl', event)
         setDate(event);
         setShowCalendar(false);
         setTaskInfo({date: event});

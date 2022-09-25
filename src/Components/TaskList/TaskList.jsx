@@ -1,18 +1,24 @@
-import React from 'react';
+import React, {useEffect} from 'react';
 import classes from './style.module.scss';
 import {useDispatch, useSelector} from "react-redux";
 import dayjs from "dayjs";
 import Check from "../UI/Check/Check";
 import star from '../../../src/images/star.svg'
-import {completeTaskAction} from "../Store/taskReducer";
+import {changeImportantTaskAction, completeTaskAction} from "../Store/taskReducer";
+import Star from "../UI/Star/Star";
 
 const TaskList = () => {
     const dispatch = useDispatch();
-    const taskList = useSelector(state => state.task.task);
+    const taskList = useSelector(state => state.task.task).filter(elem => elem.completed === false);
+
+    const changeComplete = (id) => {
+        dispatch(completeTaskAction(id));
+    }
+
     console.log(taskList);
 
-    const changeComplete = (elem) => {
-        dispatch(completeTaskAction(elem));
+    const changeImportant = (elem) => {
+        dispatch(changeImportantTaskAction(elem));
     }
 
     return (
@@ -22,7 +28,7 @@ const TaskList = () => {
                     {
                         taskList.map(elem => <div className={classes.taskListItem} key={elem.id}>
                             <div>
-                                <Check onClick={() => changeComplete(elem)}></Check>
+                                <Check onClick={() => changeComplete(elem.id)}></Check>
                                 <div>
                                     <div>
                                         <h3>{elem.taskText}</h3>
@@ -30,10 +36,9 @@ const TaskList = () => {
                                             elem.date === null ? 'Задачи' : dayjs(elem.date).format('dddd, D MMMM')
                                         }
                                     </div>
-                                    <img src={star} alt="star"/>
+                                    <Star onClick={() => changeImportant(elem)}/>
                                 </div>
                             </div>
-                            {/*Сюда вставить дату*/}
                         </div>)
                     }
                 </div>
