@@ -9,7 +9,7 @@ const Star = ({onClick}) => {
     return (
         <div className={classes.container}>
             {
-                !isImportant ? <img src={emptyStar} alt='emptyStar' onClick={() => setIsImportant(!isImportant)} className={classes.star}></img> : <img src={star} alt='star' onClick={() => setIsImportant(!isImportant)} className={classes.important}></img>
+                !isImportant ? <img src={emptyStar} alt='emptyStar' onClick={() => {setIsImportant(!isImportant); onClick()}} className={classes.star}></img> : <img src={star} alt='star' onClick={() => {setIsImportant(!isImportant); onClick()}} className={classes.important}></img>
             }
         </div>
     );

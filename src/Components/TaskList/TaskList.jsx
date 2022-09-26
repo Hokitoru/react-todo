@@ -1,9 +1,8 @@
-import React, {useEffect} from 'react';
+import React from 'react';
 import classes from './style.module.scss';
 import {useDispatch, useSelector} from "react-redux";
 import dayjs from "dayjs";
 import Check from "../UI/Check/Check";
-import star from '../../../src/images/star.svg'
 import {changeImportantTaskAction, completeTaskAction} from "../Store/taskReducer";
 import Star from "../UI/Star/Star";
 
@@ -17,8 +16,8 @@ const TaskList = () => {
 
     console.log(taskList);
 
-    const changeImportant = (elem) => {
-        dispatch(changeImportantTaskAction(elem));
+    const changeImportant = (id) => {
+        dispatch(changeImportantTaskAction(id));
     }
 
     return (
@@ -36,7 +35,7 @@ const TaskList = () => {
                                             elem.date === null ? 'Задачи' : dayjs(elem.date).format('dddd, D MMMM')
                                         }
                                     </div>
-                                    <Star onClick={() => changeImportant(elem)}/>
+                                    <Star onClick={() => changeImportant(elem.id)}/>
                                 </div>
                             </div>
                         </div>)

@@ -15,6 +15,8 @@ import AddButton from "./Components/UI/AddButton/AddButton";
 import taskInfo from '../src/Components/UI/Calendar/Calendar'
 import {store} from "./Components/Store";
 import TaskList from "./Components/TaskList/TaskList";
+import CompletedTaskList from "./Components/CompletedTaskList/CompletedTaskList";
+import Arrow from "./Components/UI/Arrow/Arrow";
 
 function App() {
 
@@ -97,6 +99,7 @@ function App() {
           <Time></Time>
           <TaskAdder></TaskAdder>
           <TaskList></TaskList>
+          <CompletedTaskList></CompletedTaskList>
       </div>
   );
 }

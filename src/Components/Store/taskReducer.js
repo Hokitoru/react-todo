@@ -15,10 +15,10 @@ export const taskReducer = (state = defaultState, action) => {
             completedTask.completed = !completedTask.completed;
             return {...state, task: [...uncompletedTasks, completedTask]};
         case CHANGE_IMPORTANT:
-            const importantChanger = {...state,};
-            const importantIndex = importantChanger.task.findIndex(task => task.id === action.payload.id);
-            importantChanger.task[importantIndex].important = !importantChanger.task[importantIndex].important;
-            return importantChanger;
+            const unimportantTasks = state.task.filter(task => task.id !== action.payload)
+            const importantTask = {...state.task.find(task => task.id === action.payload)};
+            importantTask.important = !importantTask.important;
+            return {...state, task: [...unimportantTasks, importantTask]};
         default:
             return state;
     }

@@ -1,0 +1,16 @@
+.container{
+  width: 24px;
+  height: 24px;
+}
+
+.arrow{
+  rotate: 90deg;
+}
+
+.arrowActive{
+  rotate: 0deg;
+}
+
+.arrowActive:hover, .arrow:hover{
+  transition: 0.3s;
+}

@@ -1,0 +1,32 @@
+.container{
+  width: 92%;
+  margin: 0 auto;
+}
+
+.taskListContainer{
+  width: 100%;
+
+  & > div{
+    width: 100%;
+    padding: 5px 0;
+    display: flex;
+    justify-content: center;
+
+    & > div{
+      display: flex;
+      justify-content: flex-start;
+      align-items: center;
+      width: 99%;
+
+      div{
+        margin-right: 5px;
+      }
+
+      p{
+        font-size: 21px;
+        margin: 0;
+      }
+    }
+  }
+}
+
