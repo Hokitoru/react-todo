@@ -14,8 +14,6 @@ const TaskList = () => {
         dispatch(completeTaskAction(id));
     }
 
-    console.log(taskList);
-
     const changeImportant = (id) => {
         dispatch(changeImportantTaskAction(id));
     }

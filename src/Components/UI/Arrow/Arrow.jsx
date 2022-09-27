@@ -2,7 +2,7 @@ import React, {useState} from 'react';
 import classes from './style.module.scss';
 import arrow from '../../../images/arrow.png'
 
-const Arrow = () => {
+const Arrow = ({onClick}) => {
     const [arrowSwitcher, setArrowSwitcher] = useState(false);
 
     const changeArrow = () => {
@@ -11,7 +11,7 @@ const Arrow = () => {
 
     return (
         <div className={classes.container}>
-            <img onClick={changeArrow} className={arrowSwitcher === false ? classes.arrow : classes.arrowActive} src={arrow} alt="arrow"/>
+            <img onClick={() => {changeArrow(); onClick()}} className={arrowSwitcher === false ? classes.arrow : classes.arrowActive} src={arrow} alt="arrow"/>
         </div>
     );
 };
