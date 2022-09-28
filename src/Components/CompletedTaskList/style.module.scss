@@ -5,6 +5,7 @@
 
 .taskListContainer{
   width: 100%;
+  border-bottom: 2px solid gainsboro;
 
   & > div{
     width: 100%;
@@ -18,14 +19,16 @@
       align-items: center;
       width: 99%;
 
-      div{
-        margin-right: 5px;
+      & > div{
+        margin-right: 20px;
+
+        p{
+          font-size: 21px;
+          margin: 0;
+        }
       }
 
-      p{
-        font-size: 21px;
-        margin: 0;
-      }
+
     }
   }
 }
