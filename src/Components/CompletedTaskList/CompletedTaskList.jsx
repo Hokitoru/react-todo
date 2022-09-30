@@ -21,8 +21,6 @@ const CompletedTaskList = () => {
         dispatch(completeTaskAction(id));
     }
 
-    console.log(taskList);
-
     const changeImportant = (id) => {
         dispatch(changeImportantTaskAction(id));
     }
@@ -31,7 +29,7 @@ const CompletedTaskList = () => {
         {
             taskList.length !== 0 ?
                 <div className={classes.taskListContainer}>
-                    <div>
+                    <div className={!taskListSwitcher ? classes.taskListBorder : null}>
                         <div>
                             <Arrow onClick={() => changeSwitcher()}></Arrow>
                             <p>Выполнено {taskList.length}</p>
@@ -42,9 +40,9 @@ const CompletedTaskList = () => {
                             <div className={classes.completedTaskList}>
                                 {
                                     taskList.map(task =>
-                                        <div className={classes.completedTaskListItem}>
+                                        <div key={task.id} className={classes.completedTaskListItem}>
                                             <div>
-                                                <Check onClick={() => changeComplete(task.id)}></Check>
+                                                <Check completed={task.completed} onClick={() => changeComplete(task.id)}></Check>
                                                 <div>
                                                     <div>
                                                         <h3>{task.taskText}</h3>

@@ -25,7 +25,7 @@ const TaskList = () => {
                     {
                         taskList.map(elem => <div className={classes.taskListItem} key={elem.id}>
                             <div>
-                                <Check onClick={() => changeComplete(elem.id)}></Check>
+                                <Check completed={elem.completed} onClick={() => changeComplete(elem.id)}></Check>
                                 <div>
                                     <div>
                                         <h3>{elem.taskText}</h3>

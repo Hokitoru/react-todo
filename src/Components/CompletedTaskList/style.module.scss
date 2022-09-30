@@ -5,9 +5,9 @@
 
 .taskListContainer{
   width: 100%;
-  border-bottom: 2px solid gainsboro;
 
-  & > div{
+
+  & > div:first-child{
     width: 100%;
     padding: 5px 0;
     display: flex;
@@ -31,12 +31,23 @@
 
     }
   }
+
+  .taskListBorder{
+    border-bottom: 2px solid gainsboro;
+  }
+}
+
+
+
+.taskListContainerActive{
+  border-bottom: none;
 }
 
 .completedTaskList{
-  width: 92%;
   background-color: transparent;
   margin: 20px auto;
+  display: flex;
+  flex-direction: column;
 }
 
 .completedTaskListItem{
