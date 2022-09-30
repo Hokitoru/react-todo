@@ -45,9 +45,3 @@ const TaskList = () => {
 };
 
 export default TaskList;
-
-{/*<p>*/}
-{/*    {*/}
-{/*        elem.date === null ? '' : elem.date*/}
-{/*    }*/}
-{/*</p>*/}
