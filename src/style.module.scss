@@ -3,6 +3,27 @@ body {
   background-color: #fff;
 }
 
-.taskAdder{
-  margin: 0 auto;
+.container{
+  & > div:last-child{
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+
+    & > div:first-child{
+      width: 100%;
+    }
+  }
 }
+
+.taskInfo{
+  width: 300px;
+  min-height: 100vh;
+  display: none;
+}
+
+.taskInfoVisible{
+  width: 300px;
+  min-height: 100vh;
+  display: flex;
+}
+

@@ -1,0 +1,15 @@
+.container{
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  padding: 10px 20px;
+  border: none;
+  border-bottom: 1px solid grey;
+
+  img{
+    width: 20px;
+    height: 20px;
+    padding: 0 5px 0 0;
+  }
+}

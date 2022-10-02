@@ -1,4 +1,4 @@
-import React, {createContext, useEffect, useState} from 'react';
+import React, {useState} from 'react';
 import CalendarComp from "react-calendar";
 import 'react-calendar/dist/Calendar.css';
 import calendarIcon from '../../../images/calendar.png'

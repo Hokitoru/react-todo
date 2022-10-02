@@ -5,9 +5,10 @@ import Check from "../UI/Check/Check";
 import dayjs from "dayjs";
 import Star from "../UI/Star/Star";
 import Arrow from "../UI/Arrow/Arrow";
-import {changeImportantTaskAction, completeTaskAction} from "../Store/taskReducer";
+import {changeCurrentTaskAction, changeImportantTaskAction, completeTaskAction} from "../Store/taskReducer";
+import TaskInfo from "../TaskInfo/TaskInfo";
 
-const CompletedTaskList = () => {
+const CompletedTaskList = ({onClick}) => {
     const dispatch = useDispatch();
 
     const taskList = useSelector(state => state.task.task).filter(task => task.completed === true);
@@ -25,6 +26,10 @@ const CompletedTaskList = () => {
         dispatch(changeImportantTaskAction(id));
     }
 
+    const changeCurrentTask = (id) => {
+        dispatch(changeCurrentTaskAction(id));
+    }
+
     return <div className={classes.container}>
         {
             taskList.length !== 0 ?
@@ -40,7 +45,7 @@ const CompletedTaskList = () => {
                             <div className={classes.completedTaskList}>
                                 {
                                     taskList.map(task =>
-                                        <div key={task.id} className={classes.completedTaskListItem}>
+                                        <div key={task.id} className={classes.completedTaskListItem} onClick={() => {changeCurrentTask(task.id); onClick()}}>
                                             <div>
                                                 <Check completed={task.completed} onClick={() => changeComplete(task.id)}></Check>
                                                 <div>

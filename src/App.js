@@ -17,23 +17,27 @@ import {store} from "./Components/Store";
 import TaskList from "./Components/TaskList/TaskList";
 import CompletedTaskList from "./Components/CompletedTaskList/CompletedTaskList";
 import Arrow from "./Components/UI/Arrow/Arrow";
+import TaskInfo from "./Components/TaskInfo/TaskInfo";
 
 function App() {
-    
+    const [taskInfoSwitcher, setTaskInfoSwitcher] = useState(false);
+
+
   return (
-      <div>
+      <div className={classes.container}>
           <Nav></Nav>
-          <Time></Time>
-          <TaskAdder></TaskAdder>
-          <TaskList></TaskList>
-          <CompletedTaskList></CompletedTaskList>
+          <div>
+              <div>
+                  <Time></Time>
+                  <TaskAdder></TaskAdder>
+                  <TaskList onClick={() => setTaskInfoSwitcher(!taskInfoSwitcher)}></TaskList>
+                  <CompletedTaskList onClick={() => setTaskInfoSwitcher(!taskInfoSwitcher)}></CompletedTaskList>
+              </div>
+              <div className={taskInfoSwitcher ? classes.taskInfoVisible : classes.taskInfo}>
+                  <TaskInfo></TaskInfo>
+              </div>
+          </div>
       </div>
   );
 }
-// task, id: generateId(), date, completed: false, createTime, important
 export default App;
-
-//TODO стили
-//TODO поиск таск
-//TODO Настройки
-//TODO сортировка

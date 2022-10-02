@@ -1,0 +1,23 @@
+.container{
+  width: 300px;
+  min-height: 100vh;
+  background-color: navajowhite;
+
+  .currentTask{
+    & > div:first-child{
+      display: flex;
+      align-items: center;
+      padding: 10px 5px;
+
+      &> div:last-child{
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        width: 100%;
+        h3{
+          margin: 0;
+        }
+      }
+    }
+  }
+}

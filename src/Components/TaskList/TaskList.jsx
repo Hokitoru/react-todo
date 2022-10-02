@@ -3,10 +3,10 @@ import classes from './style.module.scss';
 import {useDispatch, useSelector} from "react-redux";
 import dayjs from "dayjs";
 import Check from "../UI/Check/Check";
-import {changeImportantTaskAction, completeTaskAction} from "../Store/taskReducer";
+import {changeCurrentTaskAction, changeImportantTaskAction, completeTaskAction} from "../Store/taskReducer";
 import Star from "../UI/Star/Star";
 
-const TaskList = () => {
+const TaskList = ({onClick}) => {
     const dispatch = useDispatch();
     const taskList = useSelector(state => state.task.task).filter(elem => elem.completed === false);
 
@@ -18,12 +18,16 @@ const TaskList = () => {
         dispatch(changeImportantTaskAction(id));
     }
 
+    const changeCurrentTask = (id) => {
+        dispatch(changeCurrentTaskAction(id));
+    }
+
     return (
         <div className={classes.container}>
             {
                 <div>
                     {
-                        taskList.map(elem => <div className={classes.taskListItem} key={elem.id}>
+                        taskList.map(elem => <div className={classes.taskListItem} key={elem.id} onClick={() => {changeCurrentTask(elem.id); onClick()}}>
                             <div>
                                 <Check completed={elem.completed} onClick={() => changeComplete(elem.id)}></Check>
                                 <div>
