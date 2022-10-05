@@ -1,6 +1,7 @@
 body {
   margin: 0;
   background-color: #fff;
+  overflow: hidden;
 }
 
 .container{
@@ -11,6 +12,16 @@ body {
 
     & > div:first-child{
       width: 100%;
+
+      & > div:last-child{
+        overflow-y: auto;
+        max-height: 68vh;
+        scrollbar-width: none;
+      }
+
+      ::-webkit-scrollbar {
+        width: 0;
+      }
     }
   }
 }
@@ -26,4 +37,3 @@ body {
   min-height: 100vh;
   display: flex;
 }
-

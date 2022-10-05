@@ -4,6 +4,13 @@
   background-color: navajowhite;
 
   .currentTask{
+    textarea{
+      width: 100%;
+      max-height: 100%;
+      outline: none;
+      margin-top: 20px;
+    }
+
     & > div:first-child{
       display: flex;
       align-items: center;

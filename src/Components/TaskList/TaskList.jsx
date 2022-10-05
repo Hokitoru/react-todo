@@ -37,7 +37,7 @@ const TaskList = ({onClick}) => {
                                             elem.date === null ? 'Задачи' : dayjs(elem.date).format('dddd, D MMMM')
                                         }
                                     </div>
-                                    <Star onClick={() => changeImportant(elem.id)}/>
+                                    <Star importance={elem.important} onClick={() => changeImportant(elem.id)}/>
                                 </div>
                             </div>
                         </div>)

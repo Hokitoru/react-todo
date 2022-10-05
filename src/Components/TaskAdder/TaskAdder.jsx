@@ -16,9 +16,9 @@ const TaskAdder = () => {
 
     const createTask = () => {
         if(taskInfo.hasOwnProperty('date')){
-            dispatch(addTaskAction({...taskInfo, taskText, createTime: new Date(), id: generateId(), completed: false, important: false, description: null,}));
+            dispatch(addTaskAction({...taskInfo, taskText, createTime: new Date(), id: generateId(), completed: false, important: false, description: '',}));
         }else{
-            dispatch(addTaskAction({taskText, createTime: new Date(), id: generateId(), completed: false, important: false, date: null, description: null,}));
+            dispatch(addTaskAction({taskText, createTime: new Date(), id: generateId(), completed: false, important: false, date: null, description: '',}));
         }
 
         setDate(null);

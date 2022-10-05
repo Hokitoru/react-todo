@@ -4,7 +4,12 @@ import {useDispatch, useSelector} from "react-redux";
 import Check from "../UI/Check/Check";
 import dayjs from "dayjs";
 import Star from "../UI/Star/Star";
-import {changeCurrentTaskAction, changeImportantTaskAction, completeTaskAction} from "../Store/taskReducer";
+import {
+    changeCurrentTaskAction,
+    changeDescriptionAction,
+    changeImportantTaskAction,
+    completeTaskAction
+} from "../Store/taskReducer";
 import CalendarButton from "../UI/CalendarButton/CalendarButton";
 
 const TaskInfo = () => {
@@ -23,6 +28,9 @@ const TaskInfo = () => {
         dispatch(changeCurrentTaskAction(id));
     }
 
+    const changeDescription = (id, description) => {
+        dispatch(changeDescriptionAction({id, description}));
+    }
 
     return (
         <div className={classes.container}>
@@ -33,10 +41,12 @@ const TaskInfo = () => {
                         <div>
                             <h3>{currentTask.taskText}</h3>
                         </div>
-                        <Star onClick={() => changeImportant(currentTask.id)}/>
+                        <Star importance={currentTask.important} onClick={() => changeImportant(currentTask.id)}/>
                     </div>
                 </div>
                 <CalendarButton date={currentTask.date}></CalendarButton>
+                <textarea value={currentTask.description} onChange={event => changeDescription(currentTask.id, event.target.value)} cols="10" rows="3"></textarea>
+
             </div>
         </div>
     );

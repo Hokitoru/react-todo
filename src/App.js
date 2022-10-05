@@ -18,6 +18,7 @@ import TaskList from "./Components/TaskList/TaskList";
 import CompletedTaskList from "./Components/CompletedTaskList/CompletedTaskList";
 import Arrow from "./Components/UI/Arrow/Arrow";
 import TaskInfo from "./Components/TaskInfo/TaskInfo";
+import Scrollbar from 'react-scrollbars-custom'
 
 function App() {
     const [taskInfoSwitcher, setTaskInfoSwitcher] = useState(false);
@@ -28,10 +29,14 @@ function App() {
           <Nav></Nav>
           <div>
               <div>
-                  <Time></Time>
-                  <TaskAdder></TaskAdder>
-                  <TaskList onClick={() => setTaskInfoSwitcher(!taskInfoSwitcher)}></TaskList>
-                  <CompletedTaskList onClick={() => setTaskInfoSwitcher(!taskInfoSwitcher)}></CompletedTaskList>
+                  <div>
+                      <Time></Time>
+                      <TaskAdder></TaskAdder>
+                  </div>
+                  <div>
+                      <TaskList onClick={() => setTaskInfoSwitcher(!taskInfoSwitcher)}></TaskList>
+                      <CompletedTaskList onClick={() => setTaskInfoSwitcher(!taskInfoSwitcher)}></CompletedTaskList>
+                  </div>
               </div>
               <div className={taskInfoSwitcher ? classes.taskInfoVisible : classes.taskInfo}>
                   <TaskInfo></TaskInfo>

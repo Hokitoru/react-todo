@@ -6,13 +6,13 @@
 .arrow{
   width: 16px;
   height: 16px;
-  rotate: 90deg;
+  rotate: 0deg;
 }
 
 .arrowActive{
   width: 16px;
   height: 16px;
-  rotate: 0deg;
+  rotate: 90deg;
 }
 
 .arrowActive:hover, .arrow:hover{

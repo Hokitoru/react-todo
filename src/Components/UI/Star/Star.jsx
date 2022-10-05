@@ -3,13 +3,13 @@ import classes from "../Star/style.module.scss";
 import star from '../../../images/star.svg'
 import emptyStar from '../../../images/empty-star.svg'
 
-const Star = ({onClick}) => {
-    const [isImportant, setIsImportant] = useState(false);
+const Star = ({importance, onClick}) => {
+
 
     return (
         <div className={classes.container}>
             {
-                !isImportant ? <img src={emptyStar} alt='emptyStar' onClick={() => {setIsImportant(!isImportant); onClick()}} className={classes.star}></img> : <img src={star} alt='star' onClick={() => {setIsImportant(!isImportant); onClick()}} className={classes.important}></img>
+                importance === false ? <img src={emptyStar} alt='emptyStar' onClick={() => onClick()} className={classes.star}></img> : <img src={star} alt='star' onClick={() => onClick()} className={classes.important}></img>
             }
         </div>
     );

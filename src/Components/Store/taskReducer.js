@@ -4,6 +4,7 @@ const COMPLETE_TASK = "COMPLETE_TASK";
 const CHANGE_IMPORTANT = "CHANGE_IMPORTANT";
 const CHANGE_CURRENT_TASK = "CHANGE_CURRENT_TASK";
 const CHANGE_DATE = "CHANGE_DATE";
+const CHANGE_DESCRIPTION = "CHANGE_DESCRIPTION";
 
 export const taskReducer = (state = defaultState, action) => {
     switch (action.type){
@@ -28,6 +29,12 @@ export const taskReducer = (state = defaultState, action) => {
             const constTasks = [...state.task.filter(task => task.id !== state.currentTask.id)];
             changeDateTask.date = action.payload;
             return {...state, task: [...constTasks, changeDateTask], currentTask: changeDateTask}
+        case CHANGE_DESCRIPTION:
+            console.log(action.payload);
+            const changeDescriptionTask = {...state.task.find(task => task.id === state.currentTask.id)};
+            const constTasksDescription = [...state.task.filter(task => task.id !== state.currentTask.id)]
+            changeDescriptionTask.description = action.payload.description;
+            return {...state, task: [...constTasksDescription, changeDescriptionTask], currentTask: changeDescriptionTask}
         default:
             return state;
     }
@@ -55,6 +62,10 @@ export const changeCurrentTaskAction = (payload) => {
 
 export const changeDateAction = (payload) => {
     return {type: CHANGE_DATE, payload}
+}
+
+export const changeDescriptionAction = (payload) => {
+    return {type: CHANGE_DESCRIPTION, payload}
 }
 const defaultState = {
     task: [],
