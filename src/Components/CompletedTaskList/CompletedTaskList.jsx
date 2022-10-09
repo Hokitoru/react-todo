@@ -10,20 +10,47 @@ import TaskInfo from "../TaskInfo/TaskInfo";
 
 const CompletedTaskList = ({onClick}) => {
     const dispatch = useDispatch();
-
-    const taskList = useSelector(state => state.task.task).filter(task => task.completed === true);
+    const search = new RegExp(useSelector(state => state.task.search), 'i');
+    const sort = useSelector(state => state.task.sort);
     const [taskListSwitcher, setTaskListSwitcher] = useState(false);
+    let taskList = useSelector(state => state.task.task).filter(task => task.completed === true && search.test(task.taskText));
+
+    const sortImportance = () => {
+        const importantTasks = taskList.filter(task => task.important === true);
+        const unimportantTasks = taskList.filter(task => task.important === false)
+        return [...importantTasks, ...unimportantTasks];
+    }
+
+    const sortCreateDate = () => {
+        return [...taskList.sort((a, b) => {return a.createTime - b.createTime})]
+    }
+
+    const sortCompleteDate = () => {
+        const taskWithDate = taskList.filter(task => task.date !== null);
+        const taskWithoutDate = taskList.filter(task => task.date === null);
+        return [...taskWithDate.sort((a, b) => {return a.date - b.date}), ...taskWithoutDate]
+    }
+
+    if(sort === 1){
+        taskList = sortImportance();
+    }else if(sort === 2){
+        taskList = sortCreateDate();
+    }else if(sort === 3){
+        taskList = sortCompleteDate();
+    }
 
     const changeSwitcher = () =>{
         setTaskListSwitcher(!taskListSwitcher);
     }
 
-    const changeComplete = (id) => {
+    const changeComplete = (id, e) => {
         dispatch(completeTaskAction(id));
+        e.stopPropagation();
     }
 
-    const changeImportant = (id) => {
+    const changeImportant = (id, e) => {
         dispatch(changeImportantTaskAction(id));
+        e.stopPropagation();
     }
 
     const changeCurrentTask = (id) => {
@@ -47,7 +74,7 @@ const CompletedTaskList = ({onClick}) => {
                                     taskList.map(task =>
                                         <div key={task.id} className={classes.completedTaskListItem} onClick={() => {changeCurrentTask(task.id); onClick()}}>
                                             <div>
-                                                <Check completed={task.completed} onClick={() => changeComplete(task.id)}></Check>
+                                                <Check completed={task.completed} onClick={(e) => changeComplete(task.id, e)}></Check>
                                                 <div>
                                                     <div>
                                                         <h3>{task.taskText}</h3>
@@ -55,7 +82,7 @@ const CompletedTaskList = ({onClick}) => {
                                                             task.date === null ? 'Задачи' : dayjs(task.date).format('dddd, D MMMM')
                                                         }
                                                     </div>
-                                                    <Star importance={task.important} onClick={() => changeImportant(task.id)}/>
+                                                    <Star importance={task.important} onClick={(e) => changeImportant(task.id, e)}/>
                                                 </div>
                                             </div>
                                         </div>)

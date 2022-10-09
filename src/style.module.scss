@@ -13,6 +13,16 @@ body {
     & > div:first-child{
       width: 100%;
 
+      & > div:first-child{
+        & > div:first-child{
+          display: flex;
+          align-items: center;
+          justify-content: space-between;
+          width: 92%;
+          margin: 20px auto;
+        }
+      }
+
       & > div:last-child{
         overflow-y: auto;
         max-height: 68vh;

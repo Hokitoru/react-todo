@@ -30,7 +30,10 @@ function App() {
           <div>
               <div>
                   <div>
-                      <Time></Time>
+                      <div>
+                          <Time></Time>
+                          <SortButton></SortButton>
+                      </div>
                       <TaskAdder></TaskAdder>
                   </div>
                   <div>
