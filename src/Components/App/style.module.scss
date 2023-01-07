@@ -1,0 +1,52 @@
+body {
+  margin: 0;
+  background-color: #fff;
+  overflow: hidden;
+  font-family: 'Roboto', sans-serif;
+  font-weight: normal;
+  font-style: normal;
+}
+
+.container{
+  & > div:last-child{
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+
+    & > div:first-child{
+      width: 100%;
+
+      & > div:first-child{
+        & > div:first-child{
+          display: flex;
+          align-items: center;
+          justify-content: space-between;
+          width: 92%;
+          margin: 20px auto;
+        }
+      }
+
+      & > div:last-child{
+        overflow-y: auto;
+        max-height: 68vh;
+        scrollbar-width: none;
+      }
+
+      ::-webkit-scrollbar {
+        width: 0;
+      }
+    }
+  }
+}
+
+.taskInfo{
+  width: 300px;
+  min-height: 100vh;
+  display: none;
+}
+
+.taskInfoVisible{
+  width: 300px;
+  min-height: 100vh;
+  display: flex;
+}
